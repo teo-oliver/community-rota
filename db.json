@@ -1,0 +1,33 @@
+{
+  "timecards": [
+    {
+      "id": 1,
+      "position": 1,
+      "employee": "Teo",
+      "clock_in": "10:00am",
+      "clock_out": "17:30pm",
+      "break": "60min"
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "first_name": "Teo",
+      "last_name": "Eschweiler",
+      "email": "sebastian@codingthesmartway.com"
+    },
+    {
+      "id": 2,
+      "first_name": "Joyce",
+      "last_name": "Palmer",
+      "email": "steve@codingthesmartway.com"
+    },
+    {
+      "id": 3,
+      "first_name": "Fernando",
+      "last_name": "Smith",
+      "email": "ann@codingthesmartway.com"
+    }
+  ],
+  "weekdays": ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+}
