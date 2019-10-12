@@ -1,18 +1,64 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { Table, Th, Td } from '../styles/boardStyles';
+import { Table, Th, Td } from './styledComponents/boardStyles';
 import Droppable from './Droppable';
+import Draggable from './Draggable';
+import TimeCard from './TimeCard';
 import { fetchUser } from '../redux/actions/user';
+import { fetchTimeCard } from '../redux/actions/timecard';
 
 const Board = props => {
   useEffect(() => {
     props.fetchUser();
   }, []);
 
-  props.users.map(user => {
-    console.log(user.first_name);
-  });
+  //Think in a way to save table state
+
+  const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  const createHeaders = () => {
+    return weekdays.map(day => <Th>{day}</Th>);
+  };
+
+  const checkTimeCardExists = (user, dropId) => {
+    if (user.timecards) {
+      return user.timecards.map(timecard => {
+        if (timecard.position === dropId) {
+          return (
+            <Draggable key={Math.random()} id={Math.random()} draggable="true">
+              <TimeCard
+                position="cellId"
+                clock_in={timecard.clock_in}
+                clock_out={timecard.clock_out}
+                break={timecard.break}
+                role={timecard.role}
+              />
+            </Draggable>
+          );
+        }
+
+        return;
+      });
+    }
+  };
+
+  const createRows = () => {
+    return props.users.map(user => {
+      return (
+        <tr key={user.last_name}>
+          <Td>{user.first_name}</Td>
+          {weekdays.map(day => (
+            <Td>
+              <Droppable id={`${user.first_name}-${day}`}>
+                {checkTimeCardExists(user, `${user.first_name}-${day}`)}
+              </Droppable>
+            </Td>
+          ))}
+        </tr>
+      );
+    });
+  };
 
   return (
     <div className="Board">
@@ -20,84 +66,23 @@ const Board = props => {
         <thead>
           <tr>
             <Th></Th>
-            <Th>Sun</Th>
-            <Th>Mon</Th>
-            <Th>Tue </Th>
-            <Th>Wed</Th>
-            <Th>Tue</Th>
-            <Th>Fri</Th>
-            <Th>Sat</Th>
+            {createHeaders()}
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <Td>Teo Oliver</Td>
-            <Td>
-              <Droppable id="1"></Droppable>
-            </Td>
-            <Td>
-              <Droppable id="2"></Droppable>
-            </Td>
-            <Td>
-              <Droppable id="3"></Droppable>
-            </Td>
-            <Td>
-              <Droppable id="4"></Droppable>
-            </Td>
-            <Td>
-              <Droppable id="5"></Droppable>
-            </Td>
-            <Td>
-              <Droppable id="6"></Droppable>
-            </Td>
-            <Td>
-              <Droppable id="7"></Droppable>
-            </Td>
-          </tr>
-          <tr>
-            <Td>Joyce Betoni</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-          </tr>
-          <tr>
-            <Td>Fernando Godoy</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-          </tr>
-          <tr>
-            <Td>Jose Daniel</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-            <Td>X</Td>
-          </tr>
-        </tbody>
+        <tbody>{createRows()}</tbody>
       </Table>
     </div>
   );
 };
 
 const mapStateToProps = state => {
-  console.log('From mapstatetoprops:', state.users);
   return {
-    users: Object.values(state.users)
+    users: Object.values(state.users),
+    timecards: Object.values(state.timecards)
   };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchUser }
+  { fetchUser, fetchTimeCard }
 )(Board);

@@ -2,8 +2,8 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import Board from './components/Board';
 import TimeCard from './components/TimeCard';
-import theme from './styles/theme';
-import { Flexbox } from './styles/dndStyles';
+import theme from './components/styledComponents/theme';
+import { Flexbox } from './components/styledComponents/dndStyles';
 import Droppable from './components/Droppable';
 import Draggable from './components/Draggable';
 
@@ -30,16 +30,27 @@ function App() {
       <div className="App">
         <ThemeProvider theme={theme}>
           <Board />
-
           <Flexbox>
             <Droppable id="board-1">
               <Draggable id="card-1" draggable="true">
-                <TimeCard />
+                <TimeCard
+                  position="cellId"
+                  clock_in="15:00"
+                  clock_out="17:00"
+                  break="30min"
+                  role="supervisor"
+                />
               </Draggable>
             </Droppable>
             <Droppable id="board-2">
               <Draggable id="card-2" draggable="true">
-                <TimeCard id="fklsdhflskh" />
+                <TimeCard
+                  position="cellId"
+                  clock_in="10:00"
+                  clock_out="17:00"
+                  break="30min"
+                  role="supervisor"
+                />
               </Draggable>
             </Droppable>
           </Flexbox>

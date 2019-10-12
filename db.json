@@ -1,20 +1,26 @@
 {
-  "timecards": [
-    {
-      "id": 1,
-      "position": 1,
-      "employee": "Teo",
-      "clock_in": "10:00am",
-      "clock_out": "17:30pm",
-      "break": "60min"
-    }
-  ],
   "employees": [
     {
       "id": 1,
       "first_name": "Teo",
       "last_name": "Eschweiler",
-      "email": "sebastian@codingthesmartway.com"
+      "email": "sebastian@codingthesmartway.com",
+      "timecards": [
+        {
+          "clock_in": "10:00",
+          "clock_out": "17:30",
+          "break": "45min",
+          "position": "Teo-Mon",
+          "role": "supervisor"
+        },
+        {
+          "clock_in": "11:00",
+          "clock_out": "13:30",
+          "break": "45min",
+          "position": "Teo-Wed",
+          "role": "supervisor"
+        }
+      ]
     },
     {
       "id": 2,

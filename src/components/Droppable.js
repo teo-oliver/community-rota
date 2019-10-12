@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlexboxBoard } from '../styles/dndStyles.js';
+import { FlexboxBoard } from './styledComponents/dndStyles';
 
 function Droppable(props) {
   const drop = e => {

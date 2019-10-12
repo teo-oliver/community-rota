@@ -1,13 +1,16 @@
-import React from 'react';
-import { Card } from '../styles/timeCardStyles';
+import React, { useState } from 'react';
+import { Card } from './styledComponents/timeCardStyles';
+import { userInfo } from 'os';
 
-function TimeCard() {
+function TimeCard(props) {
+  // const [id, setId] = useState(props.id);
+  console.log(props);
   return (
-    <Card onClick={e => console.log(e.target)}>
+    <Card id={props.position} onClick={e => console.log(e.target)}>
       <div className="main">
         <div className="delete">X</div>
-        <div className="shift-time">10am - 4pm</div>
-        <div className="break">Supervisor(30min)</div>
+        <div className="shift-time">{`${props.clock_in} - ${props.clock_out}`}</div>
+        <div className="break">{`${props.role} - ${props.break}`}</div>
       </div>
     </Card>
   );
