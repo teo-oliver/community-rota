@@ -47,7 +47,12 @@ const Board = props => {
     return props.users.map(user => {
       return (
         <tr key={user.last_name}>
-          <Td>{user.first_name}</Td>
+          <Td name>
+            <div className="name">{user.first_name}</div>
+            <div className="totals">
+              <b>13</b> hours <b>2</b>shifts
+            </div>
+          </Td>
           {weekdays.map(day => (
             <Td>
               <Droppable id={`${user.first_name}-${day}`}>
@@ -70,6 +75,11 @@ const Board = props => {
           </tr>
         </thead>
         <tbody>{createRows()}</tbody>
+        <tr>
+          <Td>
+            <div className="name">+ Add</div>
+          </Td>
+        </tr>
       </Table>
     </div>
   );

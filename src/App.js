@@ -1,11 +1,13 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import GlobalStyle from './components/styledComponents/GlobalStyles';
 import Board from './components/Board';
 import TimeCard from './components/TimeCard';
 import theme from './components/styledComponents/theme';
 import { Flexbox } from './components/styledComponents/dndStyles';
 import Droppable from './components/Droppable';
 import Draggable from './components/Draggable';
+import Navbar from './components/Navbar';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -13,6 +15,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './redux/reducers';
 import thunk from 'redux-thunk';
+import { create } from 'domain';
 
 const initialState = {};
 
@@ -29,6 +32,8 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <Navbar />
           <Board />
           <Flexbox>
             <Droppable id="board-1">

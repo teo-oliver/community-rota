@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlexBoardCard } from './styledComponents/dndStyles';
+import { DraggableCard } from './styledComponents/dndStyles';
 
 //Change name to draggable and dropable
 // Get id and/or position of the element it is in (So to save on the database)
@@ -34,7 +34,7 @@ function Draggable(props) {
 
   return (
     // No need for FlexBoard Card anymore.
-    <FlexBoardCard
+    <DraggableCard
       id={props.id}
       draggable={props.draggable}
       onDragStart={dragStart}
@@ -43,7 +43,7 @@ function Draggable(props) {
       // onDrop={onDrop}
     >
       {props.children}
-    </FlexBoardCard>
+    </DraggableCard>
   );
 }
 

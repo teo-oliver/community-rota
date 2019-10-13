@@ -5,17 +5,19 @@ export const Card = styled.div`
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr;
-
+  font-size: 0.7rem;
   border-radius: 3px;
   padding: 9px 10px;
 
   background-color: ${props => props.theme.light};
-  height: 60px;
-  width: 180px;
-  max-width: 600px;
+  height: 49px;
+  width: 149px;
   cursor: pointer;
   :hover {
     background-color: gray;
+  }
+  .shift-time {
+    font-weight: bold;
   }
 
   .main {
@@ -28,10 +30,12 @@ export const Card = styled.div`
   }
   .delete {
     position: absolute;
+    text-align: center;
+    /* text-justify: center; */
     top: 3px;
     right: 3px;
-    height: 20px;
-    width: 20px;
+    height: 16px;
+    width: 16px;
     :hover {
       background-color: red;
       color: white;

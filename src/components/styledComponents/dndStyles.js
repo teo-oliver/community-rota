@@ -16,10 +16,6 @@ export const FlexboxBoard = styled.div`
   height: 100%;
 `;
 
-export const FlexBoardCard = styled.div`
-  /* padding: 15px 25px; */
-  /* background-color: #f3f3f3; */
-
+export const DraggableCard = styled.div`
   cursor: pointer;
-  /* margin-bottom: 15px; */
 `;

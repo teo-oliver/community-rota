@@ -7,7 +7,8 @@ const theme = {
   info: 'teal',
   light: 'white',
   dark: 'black',
-  muted: 'lightgray'
+  muted: 'lightgray',
+  background: 'rgba(85,214, 170, .85)'
 };
 
 export default theme;
